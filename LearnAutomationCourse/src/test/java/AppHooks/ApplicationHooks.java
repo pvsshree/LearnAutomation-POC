@@ -1,13 +1,16 @@
 package AppHooks;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 
+import com.pages.HomePage;
+import com.pages.LearnAutomationPage;
 import com.qa.factory.DriverFactory;
 import com.qa.util.ConfigReader;
 
-//import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 public class ApplicationHooks {
@@ -34,11 +37,14 @@ public class ApplicationHooks {
 		//Initialize webdriver which is passed in config.properties file
 		driver = driverFactory.init_driver(browserName);	
 	}
+
 	
-	//@After(order=0)
-	//public void quitBrowser() {
-	//driver.quit();	
 	
+	
+	
+//	@After(order = 0)
+//	public void quitBrowser() {
+//	driver.quit();	
 	//}
 	
 	

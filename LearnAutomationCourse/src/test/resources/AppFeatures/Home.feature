@@ -1,20 +1,26 @@
-Feature:
+Feature: Manage Courses
 
 Background:
 Given User has already logged in to application
 |email      |password     |
 |admin@email.com|admin@123|
-
-Scenario: Navigate to manage course section
-Given User is on "Home page"
 When User hovers to Manage see the dropdown options
 And User clicks on Manage Courses
 Then User navigates to Manage Courses page
-Then Page title should be "Manage Courses"
- 
- 
-Scenario: Add New Course
-Given User is on "Manage Courses"
+
+  
+Scenario: Popup for Add New Course
 When User clicks on Add New Course
 Then Popup for Add New Course should be displayed
-And Page title should be "Add New Course"
+
+
+Scenario: save button
+Given User is on Add New Course popup
+When Click on Save Button without entering values
+Then Message "Please fill all the fields" should be diplayed
+
+
+Scenario: choose file
+Given User is on Add New Course popup
+When User clicks on choose file and selects a file 
+Then That file should be selected
