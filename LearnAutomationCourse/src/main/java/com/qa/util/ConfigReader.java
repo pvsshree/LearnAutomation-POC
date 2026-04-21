@@ -40,11 +40,19 @@ public Properties init_prop() {
 	
 }
 
+public String getEmail() {
+	return prop.getProperty("email");
+}
 
+public String getPassword() {
+	
+return prop.getProperty("password");
+}
 
-
-
-
+public String getUrl() {
+	
+	return prop.getProperty("url");
+}
 
 
 
