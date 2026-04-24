@@ -17,6 +17,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import net.bytebuddy.asm.Advice.Return;
+
 public class HomePage {
 
 	private WebDriver driver;
@@ -166,6 +168,7 @@ public String getCourseName() {
 	return driver.findElement(courseName).getAttribute("value");
 }
 
+
 public void descAddNewCourse(String desc) {
 	WebElement desc_Add_New_Course = driver.findElement(description);
 	System.out.println(desc_Add_New_Course.getAttribute("outerhtml"));
@@ -200,22 +203,24 @@ public void sDate() {
 	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 	WebElement dayElement = wait.until(ExpectedConditions.elementToBeClickable
-			(By.xpath("//div[contains(@class,'react-datepicker__day') and text()='20' and not(contains(@class," + "'outside-month'))]")));
+			(By.xpath("//div[contains(@class,'react-datepicker__day') and text()='27' and not(contains(@class," + "'outside-month'))]")));
 	dayElement.click();
 //	sDate.sendKeys(start);
 	
 	
 }
 
-public void eDate(String end)
+public void eDate()
 {
 	WebElement eDate = wait.until(ExpectedConditions.elementToBeClickable(endDate));
 	//WebElement eDate = driver.findElement(endDate);
 eDate.sendKeys(Keys.chord(Keys.CONTROL, "a"));
 eDate.sendKeys(Keys.DELETE);
 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-eDate.sendKeys(end);
+WebElement dayElement = wait.until(ExpectedConditions.elementToBeClickable
+		(By.xpath("//div[contains(@class,'react-datepicker__day') and text()='26' and not(contains(@class," + "'outside-month'))]")));
+dayElement.click();
+//eDate.sendKeys();
 	}
 
 //No unclick is there so using negative approach
@@ -256,12 +261,16 @@ public void seleniumSelect() {
 }
 
 
-
-
-
-
-
-
+public boolean isCoursePresent(String nameOfCourse) {
+	List<WebElement> courses = driver.findElements(By.xpath("//div[@class=\"table-responsive\"]"));
+	for (WebElement course : courses) {
+		if(course.getText().trim().equals(nameOfCourse));
+	{
+return true;
+}
+	}
+return false;
+}
 
 
 

@@ -25,18 +25,18 @@ Then Message "Please fill all the fields" should be diplayed
 
 Scenario: choose file
 Given User is on Add New Course popup
-When User clicks on choose file and selects a file 
-Then That file should be selected
+
  
 Scenario: Add Course Details
 Given User is on Add New Course popup
-When User clicks on choose file and selects a file
+When User clicks on choose file and selects a file 
+Then That file should be selected
 When User enters course Name "BDD FRAMEWORK" in Course name field
 And User enters description "Cucumber with Selenium - End to End framework with POM" in description field
 And User enters instructor "Payal S" in instructor field
 And User enters price 500 in price field
 And User selects date in starts from field
-And User selects date "04/09/2026" in ends on field
+And User selects date in ends on field
 And User does not check the Permanent checkbox
 And User selects the category in category field
     |SQl |

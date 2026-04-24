@@ -168,9 +168,9 @@ import java.awt.PopupMenu;
 			    
 			}
 	
-			@When("User selects date {string} in ends on field")
-			public void user_selects_date_in_ends_on_field(String end) {
-				homePage.eDate(end);
+			@When("User selects date in ends on field")
+			public void user_selects_date_in_ends_on_field() {
+				homePage.eDate();
 			    
 			}
 	
@@ -201,9 +201,11 @@ import java.awt.PopupMenu;
 			@Then("course {string} has been successfully added")
 			public void courseVerification(String course) {
 				String actual = homePage.getCourseName();
-	//			assert.assertTrue(actual.contains(course));
+	//			
 			assertEquals(course, actual);
 			System.out.println("Verified");
+			
+			assertTrue("course present",homePage.isCoursePresent(course));
 			}
 	
 	}
